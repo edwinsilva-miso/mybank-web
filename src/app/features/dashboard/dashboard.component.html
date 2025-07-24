@@ -150,11 +150,11 @@
             <div *ngFor="let account of accounts.slice(0, 3)" class="flex items-center justify-between p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200 mb-3 last:mb-0">
               <div class="flex items-center">
                 <div class="w-10 h-10 rounded-lg flex items-center justify-center mr-4" 
-                     [ngClass]="getAccountTypeInitial(account.type) === 'C' ? 'bg-blue-500' : 'bg-green-500'">
-                  <span class="text-white font-bold text-sm">{{ getAccountTypeInitial(account.type) }}</span>
+                     [ngClass]="getAccountTypeInitial(account.accountType) === 'C' ? 'bg-blue-500' : 'bg-green-500'">
+                  <span class="text-white font-bold text-sm">{{ getAccountTypeInitial(account.accountType) }}</span>
                 </div>
                 <div>
-                  <p class="font-medium text-gray-900">{{ getAccountTypeLabel(account.type) }}</p>
+                  <p class="font-medium text-gray-900">{{ getAccountTypeLabel(account.accountType) }}</p>
                   <p class="text-sm text-gray-500">{{ account.accountNumber }}</p>
                 </div>
               </div>
