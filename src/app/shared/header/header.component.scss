@@ -1,0 +1,84 @@
+// Header component specific styles
+// Most styles are handled by Tailwind CSS classes in the template
+
+// Custom animations for header elements
+.header-logo {
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Navigation link animations
+.nav-link {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #6366f1);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+}
+
+// User menu dropdown animations
+.user-menu-dropdown {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mobile responsive adjustments
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+  
+  .nav-desktop {
+    display: none;
+  }
+  
+  .user-info {
+    display: none;
+  }
+}
+
+// Custom scrollbar for dropdown menu
+.dropdown-menu {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #e5e7eb;
+    border-radius: 2px;
+    
+    &:hover {
+      background: #d1d5db;
+    }
+  }
+} 
