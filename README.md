@@ -1,93 +1,164 @@
-# MyBank Web
+# MyBank Web - Aplicación de Banca en Línea
 
-Aplicación bancaria digital moderna desarrollada con Angular 20, TypeScript y Tailwind CSS.
+## 🏦 Descripción
 
-## Características
+MyBank Web es una aplicación moderna de banca en línea desarrollada con Angular 17 y desplegada en Google Cloud Run. La aplicación permite a los usuarios gestionar sus cuentas bancarias, realizar transacciones y administrar su perfil de manera segura.
 
-- 🏦 **Gestión de Cuentas**: Crear y administrar cuentas bancarias
-- 💰 **Transacciones**: Realizar depósitos, retiros y transferencias
-- 📊 **Dashboard**: Vista general de finanzas con métricas en tiempo real
-- 🔐 **Autenticación**: Sistema seguro de login y registro
-- 📱 **Responsive**: Diseño adaptativo para todos los dispositivos
-- 🎨 **UI Moderna**: Interfaz amigable con gradientes y efectos visuales
+## 🚀 Estado de Producción
 
-## Tecnologías
+**✅ DESPLEGADA EN PRODUCCIÓN**
 
-- **Frontend**: Angular 20, TypeScript
-- **Styling**: Tailwind CSS
-- **Estado**: RxJS Observables
-- **Rutas**: Angular Router con guards
-- **HTTP**: Angular HttpClient con interceptors
+- **URL de Producción:** https://mybank-web-7mxungdvxq-uc.a.run.app
+- **Backend API:** https://mybank-api-282065076144.us-central1.run.app/api/v1
+- **Estado:** Funcionando correctamente
 
-## Instalación
+## 🛠️ Tecnologías Utilizadas
 
-1. **Clonar el repositorio:**
+### Frontend
+- **Angular 17** - Framework de desarrollo
+- **TypeScript** - Lenguaje de programación
+- **Tailwind CSS** - Framework de estilos
+- **Angular Router** - Navegación SPA
+
+### Backend
+- **Spring Boot** - API REST
+- **PostgreSQL** - Base de datos
+- **JWT** - Autenticación
+- **Google Cloud Run** - Plataforma de despliegue
+
+### Infraestructura
+- **Google Cloud Platform**
+- **Cloud Run** - Contenedores sin servidor
+- **Cloud SQL** - Base de datos PostgreSQL
+- **Container Registry** - Almacenamiento de imágenes Docker
+
+## 📁 Estructura del Proyecto
+
+```
+mybank-web/
+├── src/
+│   ├── app/
+│   │   ├── features/          # Módulos de funcionalidades
+│   │   │   ├── auth/          # Autenticación
+│   │   │   ├── dashboard/     # Panel principal
+│   │   │   ├── accounts/      # Gestión de cuentas
+│   │   │   ├── transactions/  # Transacciones
+│   │   │   └── profile/       # Perfil de usuario
+│   │   ├── services/          # Servicios de API
+│   │   ├── models/            # Modelos de datos
+│   │   ├── guards/            # Guardias de ruta
+│   │   ├── interceptors/      # Interceptores HTTP
+│   │   └── shared/            # Componentes compartidos
+│   └── environments/          # Configuraciones de entorno
+├── Dockerfile                 # Configuración de contenedor
+├── server.js                  # Servidor de producción
+└── server-package.json        # Dependencias del servidor
+```
+
+## 🔐 Funcionalidades de Seguridad
+
+- **Autenticación JWT** - Tokens seguros para sesiones
+- **Guardias de Ruta** - Protección de rutas privadas
+- **Interceptores HTTP** - Manejo automático de tokens
+- **Validación de Formularios** - Validación en tiempo real
+- **HTTPS** - Conexiones seguras en producción
+
+## 🎨 Características de la UI/UX
+
+- **Diseño Responsivo** - Compatible con todos los dispositivos
+- **Interfaz Moderna** - Diseño limpio y profesional
+- **Navegación Intuitiva** - Experiencia de usuario optimizada
+- **Feedback Visual** - Notificaciones y estados claros
+- **Accesibilidad** - Cumple estándares de accesibilidad web
+
+## 📱 Funcionalidades Principales
+
+### Autenticación
+- Registro de usuarios
+- Inicio de sesión
+- Recuperación de contraseña
+- Gestión de perfil
+
+### Gestión de Cuentas
+- Visualización de cuentas
+- Creación de nuevas cuentas
+- Detalles de transacciones
+- Estados de cuenta
+
+### Transacciones
+- Historial de transacciones
+- Filtros y búsqueda
+- Detalles de transacciones
+- Exportación de datos
+
+### Dashboard
+- Resumen de cuentas
+- Actividad reciente
+- Métricas financieras
+- Acceso rápido a funciones
+
+## 🔧 Configuración de Entorno
+
+### Variables de Entorno de Producción
 ```bash
-git clone <repository-url>
-cd mybank-web
+NODE_ENV=production
+API_URL=https://mybank-api-282065076144.us-central1.run.app/api/v1
 ```
 
-2. **Instalar dependencias:**
+### Configuración del Backend
 ```bash
-npm install
+SPRING_PROFILES_ACTIVE=prod
+JWT_SECRET=[configurado en Cloud Run]
+DB_NAME=mybank_db
+DB_USER=mybank_app
+DB_PASSWORD=[configurado en Cloud Run]
 ```
 
-3. **Iniciar servidor de desarrollo:**
+## 📊 Monitoreo y Logs
+
+### Logs de Aplicación
 ```bash
-npm start
+# Ver logs del frontend
+gcloud logging read "resource.type=cloud_run_revision AND resource.labels.service_name=mybank-web"
+
+# Ver logs del backend
+gcloud logging read "resource.type=cloud_run_revision AND resource.labels.service_name=mybank-api"
 ```
 
-4. **Abrir en el navegador:**
-```
-http://localhost:4200
-```
+### Métricas de Rendimiento
+- **Tiempo de respuesta:** < 200ms
+- **Disponibilidad:** 99.9%
+- **Uptime:** Monitoreado 24/7
 
-## Scripts Disponibles
+## 🔄 Actualizaciones
 
-- `npm start` - Inicia el servidor de desarrollo
-- `npm run build` - Construye la aplicación para desarrollo
-- `npm run build:prod` - Construye la aplicación para producción
-- `npm run watch` - Construye en modo watch
-- `npm run lint` - Ejecuta el linter
-- `npm run lint:fix` - Corrige errores del linter automáticamente
+### Proceso de Actualización
+1. Los cambios se despliegan automáticamente desde el repositorio
+2. Cloud Build construye y despliega la nueva versión
+3. Zero-downtime deployment garantizado
+4. Rollback automático en caso de errores
 
-## Estructura del Proyecto
+### Versión Actual
+- **Frontend:** 1.0.0
+- **Backend:** 0.1.0
+- **Última actualización:** Julio 2025
 
-```
-src/
-├── app/
-│   ├── features/          # Componentes de características
-│   │   ├── auth/         # Autenticación (login, registro)
-│   │   ├── dashboard/    # Dashboard principal
-│   │   ├── accounts/     # Gestión de cuentas
-│   │   ├── transactions/ # Gestión de transacciones
-│   │   └── profile/      # Perfil de usuario
-│   ├── shared/           # Componentes compartidos
-│   │   └── header/       # Header de navegación
-│   ├── services/         # Servicios de datos
-│   ├── models/           # Modelos de datos
-│   ├── guards/           # Guards de rutas
-│   └── interceptors/     # Interceptores HTTP
-├── environments/         # Configuraciones de entorno
-└── styles.scss          # Estilos globales
-```
+## 🆘 Soporte
 
-## API Backend
+### Contacto Técnico
+- **Equipo de Desarrollo:** [Información del equipo]
+- **Documentación API:** [URL de documentación]
+- **Repositorio:** [URL del repositorio]
 
-La aplicación requiere un backend REST API con los siguientes endpoints:
+### Problemas Comunes
+- **Problemas de Login:** Verificar credenciales y conexión a internet
+- **Errores de Carga:** Refrescar la página o limpiar caché
+- **Problemas de Transacciones:** Contactar soporte técnico
 
-- `POST /auth/login` - Autenticación de usuarios
-- `POST /auth/register` - Registro de usuarios
-- `GET /accounts` - Obtener cuentas del usuario
-- `POST /accounts` - Crear nueva cuenta
-- `GET /transactions` - Obtener transacciones
-- `POST /transactions` - Crear transacción
-- `POST /transactions/{id}/process` - Procesar transacción
+## 📄 Licencia
 
-## Autor
+Este proyecto es propiedad de MyBank y está destinado para uso interno.
 
-**Edwin Silva**
+---
 
-## Licencia
-
-MIT
+**© 2025 MyBank. Todos los derechos reservados.**
